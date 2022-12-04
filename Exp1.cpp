@@ -87,4 +87,5 @@ int main(){
     cout<< "---------- TEST FOR CACHE MISS TIME ----------" << endl;
     cout<< "Time taken for the first loop: " << time_taken2 << endl;
     cout<< "Time taken for the second loop: " << time_taken3 << endl;*/
+    return 0;
 }
