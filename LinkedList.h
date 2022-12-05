@@ -4,11 +4,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct node {
+struct Node {
 	int data;
-	struct node* next;
+	struct Node* next;
 };
-typedef struct node  node_t;
+typedef struct Node  node_t;
 
 typedef struct {
 	node_t* head;
@@ -54,9 +54,13 @@ int LL_remove_from_head(LL_t* list) {
 void LL_print(LL_t* list) {
   node_t* current;
 
-  for (current = list->head; current != NULL ; current = current->next )
-    printf("%d ", current->data);
-  printf("\n");
+  for (current = list->head; current != NULL ; current = current->next ) {
+    int temp = 2;
+    int temp1 = 3;
+    temp *= temp1;
+  }
+    //printf("%d ", current->data);
+  //printf("\n");
 }
 
 void LLnode_free(node_t* node) {
