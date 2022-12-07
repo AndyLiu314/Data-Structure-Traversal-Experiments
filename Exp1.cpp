@@ -11,22 +11,18 @@ double elapsed_time( clock_t start, clock_t finish){ // returns elapsed time in 
 int main(){
     clock_t start, finish;// used for getting the time. 
     clock_t start1, finish1;
-    clock_t start2, finish2;
-    clock_t start3, finish3;
-    int *a = new int[1000000];
-    int *b = new int[1000000]; 
-    int *c = new int[1000000]; 
-    int *d = new int[1000000]; 
+    int *a = new int[10000000];
+    int *b = new int[10000000]; 
 
     start = clock();
-    for (int j = 0; j<1000000; j++){
-        a[j]*=3;
+    for (int j = 0; j<10000000; j+=64){
+        b[j]*=3;
     }
     finish = clock();
 
     start1 = clock();
-    for (int i = 0; i<1000000; i+=16){
-        b[i]*=3;
+    for (int i = 0; i<10000000; i+=64){
+        a[i]*=3;
         a[i+1]*=3;
         a[i+2]*=3;
         a[i+3]*=3;
@@ -46,46 +42,14 @@ int main(){
     }
     finish1 = clock();
 
-
-    start2 = clock();
-    for (int k = 0; k<1000000; k+=16){
-        c[k]*=3;
-        c[k+1]*=3;
-        c[k+2]*=3;
-        c[k+3]*=3;
-        c[k+4]*=3;
-        c[k+5]*=3;
-        c[k+6]*=3;
-        c[k+7]*=3;
-        c[k+8]*=3;
-        c[k+9]*=3;
-        c[k+10]*=3;
-        c[k+11]*=3;
-        c[k+12]*=3;
-        c[k+13]*=3;
-        c[k+14]*=3;
-        c[k+15]*=3;
-    }
-    finish2 = clock();
-
-    start3 = clock();
-    for (int n = 0; n<1000000; n++){
-        d[n]*=3;
-    }
-    finish3 = clock();
+    delete[] a;
+    delete[] b;
 
     double time_taken = elapsed_time(start,finish); 
     double time_taken1 = elapsed_time(start1,finish1); 
-    double time_taken2 = elapsed_time(start2,finish2);
-    double time_taken3 = elapsed_time(start3,finish3);
 
     cout<< "---------- TEST FOR OPERATION TIME ----------" << endl;
-    cout<< "Time taken for the first loop: " << time_taken << endl;
-    cout<< "Time taken for the second loop: " << time_taken1 << endl;
-
-    /*
-    cout<< "---------- TEST FOR CACHE MISS TIME ----------" << endl;
-    cout<< "Time taken for the first loop: " << time_taken2 << endl;
-    cout<< "Time taken for the second loop: " << time_taken3 << endl;*/
+    cout<< "Time taken for the first loop (Less Operations): " << time_taken << endl;
+    cout<< "Time taken for the second loop (More Operations): " << time_taken1 << endl;
     return 0;
 }
