@@ -225,7 +225,7 @@ size_t getNumNodes_unrolled(ull* list)
 }
 
 // Print function, Client must pass in a printing function for the element.
-void printList(ull* list, printElem* printFunction)
+void printList(ull* list/*, printElem* printFunction*/)
 {
   node* i;
   size_t j;
@@ -233,9 +233,7 @@ void printList(ull* list, printElem* printFunction)
     for (j = 0; (i == list->tail && j < list->nextAvailSpot)
                       || (i != list->tail && j < list->slotsPerNode); j++) {
         //(*printFunction)(i->data[j]);
-        int temp = 2;
-        int temp1 = 3;
-        temp *= temp1;
+        i->data[j] += 1; 
     }
     //cout << endl;
   }

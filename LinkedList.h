@@ -54,13 +54,12 @@ int LL_remove_from_head(LL_t* list) {
 void LL_print(LL_t* list) {
   node_t* current;
 
-  for (current = list->head; current != NULL ; current = current->next ) {
-    int temp = 2;
-    int temp1 = 3;
-    temp *= temp1;
-  }
+  for (current = list->head; current != NULL ; current = current->next )
+    current->data += 1;
+  
     //printf("%d ", current->data);
   //printf("\n");
+
 }
 
 void LLnode_free(node_t* node) {
